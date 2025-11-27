@@ -1,0 +1,204 @@
+/* src/styles/pages/_quiz.scss */
+
+.quiz-page {
+  padding-top: 40px;
+  padding-bottom: 60px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* --- Header --- */
+.quiz-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+
+  &__title {
+    color: #db2777;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  &__timer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    border: 1px solid #e9d5ff;
+    padding: 8px 16px;
+    border-radius: 12px;
+    color: #7c3aed;
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+}
+
+/* --- Progress --- */
+.progress-container {
+  margin-bottom: 40px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 12px;
+  background-color: #fce7f3;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 12px;
+
+  &__fill {
+    height: 100%;
+    background-color: #db2777;
+    border-radius: 10px;
+    transition: width 0.3s ease;
+  }
+}
+
+.progress-text {
+  color: #7c3aed;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* --- Question Card --- */
+.question-card {
+  background: #fff;
+  border: 1px solid #e9d5ff;
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+
+  &__text {
+    color: #4a044e;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 32px;
+  }
+}
+
+/* --- Options --- */
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.option-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 16px 20px;
+  background-color: #faf5ff; /* Дуже світлий фон за замовчуванням */
+  border: 1px solid #f3e8ff;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  position: relative;
+
+  &:hover:not(:disabled) {
+    background-color: #f3e8ff;
+    border-color: #d8b4fe;
+  }
+
+  /* Вимкнений стан (після відповіді) */
+  &:disabled {
+    cursor: default;
+    opacity: 0.7;
+  }
+
+  /* Правильна відповідь (Зелений) */
+  &.correct {
+    background-color: #86efac; /* Яскравий зелений як на макеті */
+    border-color: #4ade80;
+    opacity: 1;
+    
+    .option-item__label {
+      background-color: rgba(255,255,255,0.5);
+      color: #15803d;
+    }
+  }
+
+  /* Неправильна відповідь (Червоний) */
+  &.wrong {
+    background-color: #fca5a5; /* Яскравий червоний */
+    border-color: #f87171;
+    opacity: 1;
+
+    .option-item__label {
+      background-color: rgba(255,255,255,0.5);
+      color: #b91c1c;
+    }
+  }
+
+  &__label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: #f3e8ff;
+    color: #6b21a8;
+    font-weight: 600;
+    border-radius: 8px;
+    margin-right: 16px;
+    flex-shrink: 0;
+  }
+
+  &__text {
+    color: #4a044e;
+    font-size: 1.1rem;
+    font-weight: 500;
+    flex-grow: 1;
+  }
+
+  /* Іконка праворуч */
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin-left: 12px;
+  }
+}
+
+/* --- Buttons --- */
+.quiz-footer {
+  margin-top: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.exit-button {
+  padding: 12px 24px;
+  background-color: #f3e8ff;
+  color: #4a044e;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+
+  &:hover {
+    background-color: #e9d5ff;
+  }
+}
+
+.next-button {
+  padding: 12px 32px;
+  background: linear-gradient(90deg, #d946ef 0%, #8b5cf6 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+
+  &:hover {
+    opacity: 0.9;
+  }
+}

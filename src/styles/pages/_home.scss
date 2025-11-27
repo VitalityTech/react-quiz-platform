@@ -1,0 +1,133 @@
+// src/styles/pages/_home.scss
+
+.home-page {
+  padding-top: 40px;
+  padding-bottom: 60px;
+}
+
+/* --- Hero Section (Текст зверху) --- */
+.hero {
+  text-align: center;
+  margin-bottom: 50px;
+
+  &__title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    
+    // Градієнтний текст
+    background: linear-gradient(90deg, #d946ef 0%, #8b5cf6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+  }
+
+  &__subtitle {
+    color: #666;
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+}
+
+/* --- Grid Section (Сітка карток) --- */
+.quiz-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 24px;
+}
+
+/* --- Quiz Card (Віконце квізу) --- */
+.quiz-card {
+  background: #fff;
+  border: 1px solid #e9d5ff; // Світло-фіолетова рамка
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgba(139, 92, 246, 0.15); // Легка фіолетова тінь
+  }
+
+  &__title {
+    color: #c026d3; // Рожевий колір заголовка
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+  }
+
+  &__description {
+    color: #525252;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0 0 24px 0;
+    flex-grow: 1; // Розтягує блок, щоб кнопки були знизу на одній лінії
+  }
+
+  &__info {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    // Тонка лінія розділювач (опціонально, на макеті не видно чітко, але структурує)
+    // border-bottom: 1px solid #f3f4f6; 
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #4b5563;
+    font-size: 0.9rem;
+    font-weight: 500;
+
+    svg {
+      color: #7c3aed; // Фіолетовий колір іконок
+    }
+  }
+
+  &__button {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    background: linear-gradient(90deg, #ec4899 0%, #a855f7 100%); // Градієнт кнопки
+    color: white;
+    font-weight: 600;
+    padding: 12px;
+    border-radius: 8px;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
+.info {
+  margin-top: 600px;
+  text-align: center;
+
+  &__text {
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #e0c9f5; // Фіолетовий колір тексту
+  }
+}
+// Адаптив для мобільних
+@media (max-width: 640px) {
+  .hero__title {
+    font-size: 1.75rem;
+  }
+  .quiz-grid {
+    grid-template-columns: 1fr;
+  }
+}

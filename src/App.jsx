@@ -5,6 +5,9 @@ import CreateQuizPage from './pages/CreateQuizPage';
 import QuizPage from './pages/QuizPage';
 import ResultsPage from './pages/ResultsPage';
 import './styles/App.scss';
+import "./styles/pages/_home.scss";
+import "./styles/pages/_quiz.scss";
+import "./styles/pages/_results.scss";
 
 const App = () => {
   return (
