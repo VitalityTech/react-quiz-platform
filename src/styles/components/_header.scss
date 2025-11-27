@@ -1,0 +1,137 @@
+.header {
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--color-primary) 0%,
+    var(--color-secondary) 100%
+  );
+  color: #fff;
+  padding: 24px 16px;
+  min-height: 76px;
+  display: block;
+  box-shadow: 0 6px 18px rgba(134, 56, 255, 0.08), 0 2px 6px rgba(0, 0, 0, 0.12);
+  position: relative;
+  z-index: 10;
+}
+
+.header_container {
+  max-width: 1420px;
+  margin: 0 auto;
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.logo_container {
+  display: flex;
+  align-items: center;
+}
+
+.logo_button {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+}
+
+.logo_icon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  display: block;
+  color: #fff;
+}
+
+.logo_title {
+  font-size: 1.9rem;
+  font-weight: 800;
+  margin: 0;
+  line-height: 1;
+  letter-spacing: -0.6px;
+  color: #fff;
+}
+
+.header_nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header__nav-link {
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 14px;
+  transition: all 200ms ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #a855f7;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+/* Hover states */
+.header__nav-link:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Active state */
+.header__nav-link.active {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .header {
+    padding: 14px 0;
+    min-height: 68px;
+  }
+  .logo_icon {
+    width: 36px;
+    height: 36px;
+  }
+  .logo_title {
+    font-size: 1.6rem;
+  }
+  .header_container {
+    padding: 0 20px;
+  }
+  .header__nav-link {
+    padding: 10px 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 12px 0;
+    min-height: 64px;
+  }
+  .header_container {
+    padding: 0 14px;
+    gap: 12px;
+  }
+  .logo_title {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+  .header__nav-link {
+    font-size: 0.95rem;
+    padding: 8px 18px;
+  }
+  .header_nav {
+    gap: 12px;
+  }
+}

@@ -1,0 +1,36 @@
+:root {
+  --color-primary: #ff2caf; /* Яскравий рожевий як у макеті */
+  --color-secondary: #8b2bff; /* Глибокий фіолетовий */
+
+  --color-primary-foreground: #fff;
+  --color-secondary-foreground: #fff;
+
+  --color-accent: #f3e8ff;
+  --color-accent-foreground: #6b21a8;
+
+  --color-background: #fdf4ff;
+  --color-foreground: #4a044e;
+
+  --color-card: #fff;
+  --color-card-foreground: #4a044e;
+
+  --color-popover: #fff;
+  --color-popover-foreground: #4a044e;
+
+  --color-muted: #f3e8ff;
+  --color-muted-foreground: #86198f;
+
+  --color-border: #e9d5ff;
+  --color-input: #e9d5ff;
+
+  --color-ring: #ec4899;
+
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #fff;
+
+  --color-success: #22c55e;
+  --color-success-foreground: #fff;
+
+  --radius: 0.5rem;
+  --font-family: "Poppins", "Segoe UI", sans-serif;
+}
