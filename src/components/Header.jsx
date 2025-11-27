@@ -1,11 +1,16 @@
 import { NavLink } from "react-router-dom";
-
 const Header = () => {
+  const playSound = () => {
+    const audio = new Audio("/homebuttonsound.mp3"); 
+    audio.volume = 0.5;
+    audio.play().catch(e => console.error("Error playing sound:", e));  
+  };
   return (
     <header className="header">
       <div className="header_container">
         <div className="logo_container">
-          <button className="logo_button" aria-label="Home">
+          <button className="logo_button" aria-label="Home" onClick={playSound}>
+            
             <svg
               width="36"
               height="36"

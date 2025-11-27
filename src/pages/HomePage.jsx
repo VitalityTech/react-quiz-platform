@@ -1,4 +1,3 @@
-import { useEffect } from "react"; // 1. Импортируем useEffect
 import { Link } from "react-router-dom";
 
 // ... ваш массив quizzes ...
@@ -28,17 +27,6 @@ const quizzes = [
 ];
 
 const HomePage = () => {
-  // 2. Добавляем логику блокировки скролла
-  useEffect(() => {
-    // При открытии страницы: убираем скролл
-    document.body.style.overflow = "hidden";
-
-    // При уходе со страницы: возвращаем скролл
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, []);
-
   return (
     <div className="home-page container">
       {/* Hero Section */}
