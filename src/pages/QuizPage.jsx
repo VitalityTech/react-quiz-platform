@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 // Додали поле timeLimit (у секундах) для кожного квізу
@@ -50,37 +50,15 @@ const QuizPage = () => {
   const [timeLeft, setTimeLeft] = useState(quizData ? quizData.timeLimit : 60);
   const [userAnswers, setUserAnswers] = useState([]);
 
-  // Якщо квіз не знайдено - показуємо помилку (але хуки вище вже відпрацювали)
-  if (!quizData) {
-    return (
-      <div className="container" style={{paddingTop: "40px"}}>
-        Quiz not found! <button onClick={() => navigate("/")} className="exit-button">Go Home</button>
-      </div>
-    );
-  }
-
-  const question = quizData.questions[currentQuestionIndex];
-  const totalQuestions = quizData.questions.length;
-
-  // --- Логіка Таймера ---
-  useEffect(() => {
-    // Якщо час вийшов -> викликаємо фініш
-    if (timeLeft <= 0) {
-      handleTimeUp();
-      return;
-    }
-
-    // Таймер тікає завжди, поки не буде 0
-    const timer = setInterval(() => {
-      setTimeLeft((prev) => prev - 1);
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, [timeLeft]);
-  // Важливо: ми прибрали залежність від currentQuestionIndex, тому таймер НЕ скидається
+  // Обчислюємо безпечно question та totalQuestions (щоб хуки і логіка могли бути викликані незалежно від quizData)
+  const totalQuestions = quizData ? quizData.questions.length : 0;
+  const question = quizData ? quizData.questions[currentQuestionIndex] : null;
 
   // --- Коли час вийшов ---
-  const handleTimeUp = () => {
+  const handleTimeUp = useCallback(() => {
+    // Якщо немає даних квізу — не робимо нічого
+    if (!quizData) return;
+
     // 1. Визначаємо, з якого питання починати заповнювати пропуски
     // Якщо на поточне питання вже дали відповідь (але не натиснули Next), то воно зараховане.
     // Якщо ні - то воно теж пропущене.
@@ -106,7 +84,33 @@ const QuizPage = () => {
 
     // 4. Переходимо на результати
     navigate(`/results/${quizId}`, { state: { userAnswers: finalAnswers, totalQuestions } });
-  };
+  }, [quizData, currentQuestionIndex, isAnswered, userAnswers, navigate, quizId, totalQuestions]);
+
+  // --- Логіка Таймера ---
+  useEffect(() => {
+    // Якщо час вийшов -> викликаємо фініш
+    if (timeLeft <= 0) {
+      handleTimeUp();
+      return;
+    }
+
+    // Таймер тікає завжди, поки не буде 0
+    const timer = setInterval(() => {
+      setTimeLeft((prev) => prev - 1);
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [timeLeft, handleTimeUp]);
+  // Важливо: ми прибрали залежність від currentQuestionIndex, тому таймер НЕ скидається
+
+  // Якщо квіз не знайдено - показуємо помилку (хуки вже відпрацювали)
+  if (!quizData) {
+    return (
+      <div className="container" style={{paddingTop: "40px"}}>
+        Quiz not found! <button onClick={() => navigate("/")} className="exit-button">Go Home</button>
+      </div>
+    );
+  }
 
   const handleOptionClick = (optionId) => {
     if (isAnswered) return;
