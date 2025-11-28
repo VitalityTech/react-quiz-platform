@@ -1,11 +1,22 @@
 // src/styles/pages/_home.scss
 
 .home-page {
-  padding-top: 40px;
-  padding-bottom: 60px;
+  padding-top: 48px;
+  padding-bottom: 72px;
+
+  /* allow home page to use almost full viewport width like the mockup */
+  &.container {
+    max-width: none;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
 }
 
-/* --- Hero Section (Текст зверху) --- */
+.container {
+  max-width: 1489px;
+  margin: 0 auto;
+}
+
 .hero {
   text-align: center;
   margin-bottom: 50px;
@@ -14,7 +25,7 @@
     font-size: 2.25rem;
     font-weight: 700;
     margin-bottom: 12px;
-    
+
     // Градієнтний текст
     background: linear-gradient(90deg, #d946ef 0%, #8b5cf6 100%);
     background-clip: text;
@@ -35,24 +46,36 @@
 /* --- Grid Section (Сітка карток) --- */
 .quiz-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 24px;
+  grid-template-columns: 1fr;
+  gap: 36px;
+}
+
+@media (min-width: 768px) {
+  .quiz-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1100px) {
+  .quiz-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 /* --- Quiz Card (Віконце квізу) --- */
 .quiz-card {
   background: #fff;
-  border: 1px solid #e9d5ff; // Світло-фіолетова рамка
-  border-radius: 16px;
-  padding: 24px;
+  border: 1px solid rgba(139, 43, 255, 0.1);
+  border-radius: 20px;
+  padding: 36px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 22px 50px rgba(16, 24, 40, 0.06);
+  transition: transform 220ms ease, box-shadow 220ms ease;
 
   &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 15px -3px rgba(139, 92, 246, 0.15); // Легка фіолетова тінь
+    transform: translateY(-8px);
+    box-shadow: 0 38px 80px rgba(139, 43, 255, 0.09);
   }
 
   &__title {
@@ -76,7 +99,7 @@
     margin-bottom: 24px;
     padding-bottom: 24px;
     // Тонка лінія розділювач (опціонально, на макеті не видно чітко, але структурує)
-    // border-bottom: 1px solid #f3f4f6; 
+    // border-bottom: 1px solid #f3f4f6;
   }
 
   &__meta {
@@ -94,17 +117,22 @@
 
   &__button {
     display: block;
+    width: 100%;
     text-align: center;
     text-decoration: none;
-    background: linear-gradient(90deg, #ec4899 0%, #a855f7 100%); // Градієнт кнопки
-    color: white;
-    font-weight: 600;
-    padding: 12px;
-    border-radius: 8px;
-    transition: opacity 0.2s;
+    color: #fff;
+    font-weight: 700;
+    padding: 16px 20px;
+    border-radius: 14px;
+    background: linear-gradient(90deg, #ff2caf 6%, #8b2bff 94%);
+    box-shadow: 0 14px 34px rgba(139, 43, 255, 0.1);
+    border: none;
+    transition: transform 180ms ease, box-shadow 180ms ease, opacity 120ms ease;
 
     &:hover {
-      opacity: 0.9;
+      transform: translateY(-2px);
+      box-shadow: 0 22px 44px rgba(139, 43, 255, 0.14);
+      opacity: 0.95;
     }
   }
 }

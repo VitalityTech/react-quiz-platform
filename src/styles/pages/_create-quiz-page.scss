@@ -1,0 +1,154 @@
+/* Page-specific SCSS for Create Quiz page */
+.create-quiz-page {
+  padding: 2.5rem 0 4rem;
+  background: var(--color-background, #fdf4ff);
+
+  &.container {
+    max-width: 980px;
+    margin: 0 auto;
+    // padding: 0 1.25rem;
+  }
+
+  .page-title {
+    color: var(--color-accent-foreground, #6b21a8);
+    margin: 0 0 1rem 0;
+    font-size: 1.75rem;
+    font-weight: 600;
+  }
+
+  .card {
+    background: #fff;
+    border: 1px solid rgba(139, 43, 255, 0.08);
+    border-radius: 12px;
+    padding: 1.25rem 1.25rem 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 8px 22px rgba(16, 24, 40, 0.04);
+  }
+
+  .field {
+    margin-bottom: 0.85rem;
+  }
+  .field.small {
+    max-width: 360px;
+  }
+  .field-label {
+    font-size: 0.9rem;
+    color: var(--color-accent-foreground, #6b21a8);
+    margin-bottom: 0.45rem;
+  }
+
+  .input,
+  .textarea {
+    width: 100%;
+    padding: 0.6rem 0.9rem;
+    border-radius: 8px;
+    border: 1px solid rgba(139, 43, 255, 0.12);
+    background: rgba(243, 232, 255, 0.75);
+    font-size: 0.95rem;
+  }
+  .textarea {
+    min-height: 80px;
+    resize: vertical;
+  }
+
+  .questions-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+  }
+  .btn {
+    background: transparent;
+    border: none;
+    color: var(--color-accent-foreground, #6b21a8);
+    padding: 0.45rem 0.8rem;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .btn.small {
+    padding: 0.35rem 0.65rem;
+    font-size: 0.9rem;
+  }
+  .btn.ghost {
+    background: transparent;
+    color: rgba(16, 24, 40, 0.65);
+  }
+  .btn.add-question {
+    background: linear-gradient(
+      90deg,
+      var(--color-primary),
+      var(--color-secondary)
+    );
+    color: #fff;
+    border-radius: 12px;
+    padding: 0.45rem 0.9rem;
+  }
+
+  .question-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.6rem;
+  }
+  .question-actions {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .option-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .radio-wrap {
+    display: inline-flex;
+    align-items: center;
+  }
+  .radio-wrap input {
+    margin-right: 0.5rem;
+    width: 1.05rem;
+    height: 1.05rem;
+  }
+  .option-input {
+    flex: 1;
+  }
+  .icon.ghost {
+    background: transparent;
+    border-radius: 6px;
+  }
+
+  .muted {
+    color: rgba(16, 24, 40, 0.45);
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+  }
+
+  .form-actions {
+    margin-top: 1.5rem;
+  }
+  .save-btn {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    border-radius: 8px;
+    color: #fff;
+    background: linear-gradient(
+      90deg,
+      var(--color-primary),
+      var(--color-secondary)
+    );
+    border: none;
+    font-weight: 600;
+    box-shadow: 0 8px 22px rgba(139, 43, 255, 0.12);
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 980px;
+  }
+}

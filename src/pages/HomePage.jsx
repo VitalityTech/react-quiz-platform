@@ -73,11 +73,11 @@ const HomePage = () => {
       </section>
 
       {/* Footer Info */}
-      <div className="info">
+      {/* <div className="info">
         <section className="info__text">
           <h3 className="info__title">PickMe Quizzes: Your Online Quiz Platform. By PickMe Interactive.</h3>
         </section>
-      </div>
+      </div> */}
     </div>
   );
 };

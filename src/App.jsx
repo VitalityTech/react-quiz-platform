@@ -8,6 +8,7 @@ import './styles/App.scss';
 import "./styles/pages/_home.scss";
 import "./styles/pages/_quiz.scss";
 import "./styles/pages/_results.scss";
+import "./styles/pages/_create-quiz-page.scss";
 
 const App = () => {
   return (
