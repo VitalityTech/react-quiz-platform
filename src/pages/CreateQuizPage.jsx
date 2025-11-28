@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/App.scss";
 import "../styles/pages/_create-quiz-page.scss";
 
@@ -22,6 +23,7 @@ const CreateQuizPage = () => {
   const [description, setDescription] = useState("");
   const [timeLimit, setTimeLimit] = useState(60);
   const [questions, setQuestions] = useState([emptyQuestion(1)]);
+  const navigate = useNavigate();
 
   function updateQuestion(id, changes) {
     setQuestions((qs) =>
@@ -85,7 +87,6 @@ const CreateQuizPage = () => {
 
   function handleSave(e) {
     e.preventDefault();
-    // Basic validation
     if (!title.trim()) return alert("Please enter a quiz title");
     if (questions.length === 0) return alert("Add at least one question");
 
@@ -95,14 +96,28 @@ const CreateQuizPage = () => {
       timeLimit: Number(timeLimit),
       questions,
     };
-    console.log("Save quiz payload:", payload);
-    // For now store locally and notify
+    // Persist the quiz into `localStorage` under key `quizzes` so the HomePage can render it
     try {
+      const stored = localStorage.getItem("quizzes");
+      const list = stored ? JSON.parse(stored) : [];
+      const newQuiz = {
+        id: Date.now(),
+        title: payload.title,
+        description: payload.description,
+        questions: payload.questions,
+        timeLimit: payload.timeLimit,
+        createdAt: new Date().toISOString(),
+      };
+      list.unshift(newQuiz);
+      localStorage.setItem("quizzes", JSON.stringify(list));
+      // also keep last draft (optional)
       localStorage.setItem("lastQuizDraft", JSON.stringify(payload));
+      // navigate back to home so user can see the new quiz
+      navigate("/");
     } catch (err) {
-      console.error("Failed to save draft to localStorage:", err);
+      console.error("Failed to save quiz to localStorage:", err);
+      alert("Failed to save quiz");
     }
-    alert("Quiz saved (draft) — check console or localStorage");
   }
 
   return (
