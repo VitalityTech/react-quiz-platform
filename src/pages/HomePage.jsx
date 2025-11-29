@@ -36,14 +36,31 @@ const normalizeStored = (parsed) =>
     time: q.timeLimit ? `${q.timeLimit}s` : q.time || "",
   }));
 
+const cleanDeletedRaw = () => {
+  try {
+    const raw = localStorage.getItem("deletedQuizIds");
+    if (!raw) return new Set();
+    const arr = JSON.parse(raw) || [];
+    const defaultIds = new Set(defaultQuizzes.map((d) => String(d.id)));
+    const filtered = arr.filter((id) => !defaultIds.has(String(id)));
+    if (filtered.length !== arr.length) {
+      try {
+        localStorage.setItem("deletedQuizIds", JSON.stringify(filtered));
+      } catch {
+        // ignore write errors
+      }
+    }
+    return new Set(filtered.map(String));
+  } catch {
+    return new Set();
+  }
+};
+
 const HomePage = () => {
   const [quizzes, setQuizzes] = useState(() => {
     let deleted = new Set();
     try {
-      const deletedRaw = localStorage.getItem("deletedQuizIds");
-      deleted = deletedRaw
-        ? new Set(JSON.parse(deletedRaw).map(String))
-        : new Set();
+      deleted = cleanDeletedRaw();
 
       const stored = localStorage.getItem("quizzes");
       if (stored) {
@@ -52,7 +69,6 @@ const HomePage = () => {
           const normalized = normalizeStored(parsed).filter(
             (q) => !deleted.has(String(q.id))
           );
-          // Merge stored quizzes before defaults, avoiding duplicates by id and deleted ids
           const storedIds = new Set(normalized.map((q) => String(q.id)));
           const merged = [
             ...normalized,
@@ -72,10 +88,7 @@ const HomePage = () => {
   useEffect(() => {
     const reloadFromStorage = () => {
       try {
-        const deletedRaw = localStorage.getItem("deletedQuizIds");
-        const deleted = deletedRaw
-          ? new Set(JSON.parse(deletedRaw).map(String))
-          : new Set();
+        const deleted = cleanDeletedRaw();
 
         const stored = localStorage.getItem("quizzes");
         if (stored) {
@@ -99,16 +112,8 @@ const HomePage = () => {
       } catch (err) {
         console.error("Failed to update quizzes from storage event:", err);
       }
-      // fallback: defaults excluding deleted ids
-      try {
-        const deletedRaw = localStorage.getItem("deletedQuizIds");
-        const deleted = deletedRaw
-          ? new Set(JSON.parse(deletedRaw).map(String))
-          : new Set();
-        setQuizzes(defaultQuizzes.filter((d) => !deleted.has(String(d.id))));
-      } catch {
-        setQuizzes(defaultQuizzes);
-      }
+      const deleted = cleanDeletedRaw();
+      setQuizzes(defaultQuizzes.filter((d) => !deleted.has(String(d.id))));
     };
 
     const handleStorage = (e) => {
@@ -122,13 +127,17 @@ const HomePage = () => {
 
   const handleDelete = (id) => {
     try {
-      // remove from stored quizzes list
+      const isDefault = defaultQuizzes.some((d) => String(d.id) === String(id));
+      if (isDefault) {
+        setQuizzes((prev) => prev.filter((p) => String(p.id) !== String(id)));
+        return;
+      }
+
       const storedRaw = localStorage.getItem("quizzes");
       const list = storedRaw ? JSON.parse(storedRaw) : [];
       const filtered = list.filter((q) => String(q.id) !== String(id));
       localStorage.setItem("quizzes", JSON.stringify(filtered));
 
-      // persist deleted id so it won't reappear (even if defaults/drafts exist)
       const deletedRaw = localStorage.getItem("deletedQuizIds");
       const deletedArr = deletedRaw ? JSON.parse(deletedRaw) : [];
       if (!deletedArr.map(String).includes(String(id))) {
@@ -136,7 +145,6 @@ const HomePage = () => {
         localStorage.setItem("deletedQuizIds", JSON.stringify(deletedArr));
       }
 
-      // update UI state
       setQuizzes((prev) => prev.filter((p) => String(p.id) !== String(id)));
     } catch (err) {
       console.error("Failed to delete quiz:", err);
@@ -155,7 +163,15 @@ const HomePage = () => {
 
       <section className="quiz-grid">
         {quizzes.map((quiz) => (
-          <div key={quiz.id} className="quiz-card">
+          <div
+            key={quiz.id}
+            className={
+              "quiz-card" +
+              (quiz.description && quiz.description.length > 100
+                ? " quiz-card--long"
+                : "")
+            }
+          >
             <h2 className="quiz-card__title">{quiz.title}</h2>
             <p className="quiz-card__description">{quiz.description}</p>
 
@@ -213,12 +229,6 @@ const HomePage = () => {
           </div>
         ))}
       </section>
-
-      {/* <div className="info">
-        <section className="info__text">
-          <h3 className="info__title">PickMe Quizzes: Your Online Quiz Platform. By PickMe Interactive.</h3>
-        </section>
-      </div> */}
     </div>
   );
 };

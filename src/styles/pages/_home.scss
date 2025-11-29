@@ -45,6 +45,17 @@
   gap: 36px;
 }
 
+/* Slightly tighter spacing on small devices */
+@media (max-width: 520px) {
+  .home-page {
+    padding-top: 20px;
+    padding-bottom: 40px;
+  }
+  .quiz-grid {
+    gap: 18px;
+  }
+}
+
 @media (min-width: 768px) {
   .quiz-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -62,7 +73,7 @@
   background: #fff;
   border: 1px solid rgba(139, 43, 255, 0.1);
   border-radius: 20px;
-  padding: 36px;
+  padding: 42px;
   display: flex;
   flex-direction: column;
   box-shadow: 0 22px 50px rgba(16, 24, 40, 0.06);
@@ -86,6 +97,66 @@
     line-height: 1.5;
     margin: 0 0 24px 0;
     flex-grow: 1;
+  }
+
+  /* responsive adjustments */
+  @media (max-width: 640px) {
+    padding: 24px;
+    min-height: 360px;
+    border-radius: 14px;
+    &__title {
+      font-size: 1.05rem;
+    }
+    &__description {
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+    }
+    &__info {
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+    }
+    &__button {
+      padding: 12px 14px;
+      border-radius: 10px;
+    }
+    &__delete {
+      top: 14px;
+      right: 14px;
+      padding: 6px 8px;
+      font-size: 0.8rem;
+    }
+  }
+
+  /* When a card has long description, pin actions to top-right on small screens */
+  &.quiz-card--long {
+    .quiz-card__actions {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+      width: auto;
+    }
+
+    .quiz-card__button {
+      width: auto;
+      padding: 10px 14px;
+      border-radius: 10px;
+      box-shadow: 0 10px 26px rgba(139, 43, 255, 0.08);
+      white-space: nowrap;
+    }
+
+    .quiz-card__delete {
+      position: static;
+      margin: 0;
+    }
+
+    .quiz-card__description {
+      margin-top: 60px;
+    }
   }
 
   &__info {
@@ -132,13 +203,13 @@
   &__actions {
     display: flex;
     gap: 12px;
-    margin-top: 12px;
+    margin-top: auto; /* push actions to bottom */
   }
 
   &__delete {
     position: absolute;
-    top: 12px;
-    right: 12px;
+    top: 28px; /* moved down so it sits below the title */
+    right: 28px;
     background: rgba(139, 43, 255, 0.06);
     color: #7c3aed;
     border: 1px solid rgba(139, 43, 255, 0.12);
@@ -180,3 +251,31 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Mobile: stack actions and place Delete under Start Quiz */
+@media (max-width: 640px) {
+  .quiz-card__actions {
+    position: static !important;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 12px; /* ensure actions sit below description */
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .quiz-card__button,
+  .quiz-card__delete {
+    width: 100%;
+    display: block;
+    position: static; /* ensure Delete is in flow under Start */
+  }
+
+  /* For cards that were set to position actions absolute on small screens, undo that */
+  .quiz-card--long .quiz-card__actions {
+    position: static;
+    top: auto;
+    right: auto;
+  }
+}
+
+/* duplicate cleanup: removed stray .quiz-card__delete rule */

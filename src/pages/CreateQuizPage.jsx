@@ -87,7 +87,8 @@ const CreateQuizPage = () => {
 
   function handleSave(e) {
     e.preventDefault();
-    if (!title.trim()) return alert("Please enter a quiz title");
+    if (!title.trim() || !description.trim())
+      return alert("Please enter a quiz title and description");
     if (questions.length === 0) return alert("Add at least one question");
 
     const payload = {
@@ -96,7 +97,6 @@ const CreateQuizPage = () => {
       timeLimit: Number(timeLimit),
       questions,
     };
-    // Persist the quiz into `localStorage` under key `quizzes` so the HomePage can render it
     try {
       const stored = localStorage.getItem("quizzes");
       const list = stored ? JSON.parse(stored) : [];
@@ -110,9 +110,7 @@ const CreateQuizPage = () => {
       };
       list.unshift(newQuiz);
       localStorage.setItem("quizzes", JSON.stringify(list));
-      // also keep last draft (optional)
       localStorage.setItem("lastQuizDraft", JSON.stringify(payload));
-      // navigate back to home so user can see the new quiz
       navigate("/");
     } catch (err) {
       console.error("Failed to save quiz to localStorage:", err);

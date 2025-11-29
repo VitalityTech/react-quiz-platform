@@ -1,4 +1,3 @@
-/* Page-specific SCSS for Create Quiz page */
 .create-quiz-page {
   padding: 2.5rem 0 4rem;
   background: var(--color-background, #fdf4ff);
@@ -149,5 +148,63 @@
 @media (min-width: 992px) {
   .container {
     max-width: 980px;
+  }
+}
+
+/* Responsive: stack and tighten layout on smaller screens */
+@media (max-width: 720px) {
+  .create-quiz-page {
+    padding: 1.25rem 0 2rem;
+  }
+  .create-quiz-page .card {
+    padding: 0.85rem 0.9rem;
+    border-radius: 10px;
+  }
+  .questions-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .options {
+    gap: 0.4rem;
+  }
+  .option-row {
+    gap: 0.5rem;
+  }
+  .radio-wrap input {
+    width: 0.95rem;
+    height: 0.95rem;
+  }
+  .btn.add-question {
+    padding: 0.4rem 0.65rem;
+    border-radius: 10px;
+  }
+  .form-actions {
+    margin-top: 1rem;
+  }
+  .save-btn {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .create-quiz-page .field-label {
+    font-size: 0.85rem;
+  }
+  .input,
+  .textarea {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.95rem;
+  }
+  .option-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .option-row .option-input {
+    width: 100%;
+  }
+  .radio-wrap {
+    align-self: flex-start;
   }
 }

@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-// Додали поле timeLimit (у секундах) для кожного квізу - статичні приклади
 const quizzesData = {
   1: {
     title: "General Knowledge",
@@ -159,7 +158,6 @@ const QuizPage = () => {
   const { quizId } = useParams();
   const navigate = useNavigate();
 
-  // Try to load quizzes saved in localStorage first (created by CreateQuizPage)
   const loadStoredQuiz = () => {
     try {
       const raw = localStorage.getItem("quizzes");
@@ -169,7 +167,6 @@ const QuizPage = () => {
       const found = arr.find((q) => String(q.id) === String(quizId));
       if (!found) return null;
 
-      // Normalize saved quiz shape to the shape expected by this page
       const normalizedQuestions = (found.questions || []).map((qq) => {
         const questionText = qq.text || qq.question || qq.title || "";
         const opts = (qq.options || []).map((opt, i) => ({
@@ -201,52 +198,39 @@ const QuizPage = () => {
     }
   };
 
-  // Безпечно отримуємо дані або порожній об'єкт, щоб хуки не ламалися
   const quizData = loadStoredQuiz() || quizzesData[quizId] || null;
 
-  // Хуки ініціалізуються завжди
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState(null);
   const [isAnswered, setIsAnswered] = useState(false);
-  // Ініціалізуємо таймер загальним часом квізу
   const [timeLeft, setTimeLeft] = useState(quizData ? quizData.timeLimit : 60);
   const [userAnswers, setUserAnswers] = useState([]);
 
-  // Обчислюємо безпечно question та totalQuestions (щоб хуки і логіка могли бути викликані незалежно від quizData)
   const totalQuestions = quizData ? quizData.questions.length : 0;
   const question = quizData ? quizData.questions[currentQuestionIndex] : null;
 
-  // --- Логіка Таймера (обробка "time up" інтегрована всередині ефекту) ---
   useEffect(() => {
-    // Якщо час вийшов -> обробляємо фініш прямо тут
     if (timeLeft <= 0) {
-      // Якщо немає даних квізу — не робимо нічого
       if (!quizData) return;
 
-      // 1. Визначаємо, з якого питання починати заповнювати пропуски
-      // Якщо на поточне питання вже дали відповідь (але не натиснули Next), то воно зараховане.
-      // Якщо ні - то воно теж пропущене.
       let startIndex = currentQuestionIndex;
       if (isAnswered) {
         startIndex = currentQuestionIndex + 1;
       }
 
-      // 2. Формуємо масив пропущених питань
       const remainingQuestions = quizData.questions.slice(startIndex);
 
       const missedAnswers = remainingQuestions.map((q) => ({
         questionId: q.id,
         questionText: q.question,
-        selectedOption: null, // Час вийшов -> немає відповіді
+        selectedOption: null,
         correctOption: q.correctAnswer,
         isCorrect: false,
         options: q.options,
       }));
 
-      // 3. Об'єднуємо з тим, що користувач вже встиг відповісти
       const finalAnswers = [...userAnswers, ...missedAnswers];
 
-      // 4. Переходимо на результати
       navigate(`/results/${quizId}`, {
         state: { userAnswers: finalAnswers, totalQuestions },
       });
@@ -254,7 +238,6 @@ const QuizPage = () => {
       return;
     }
 
-    // Таймер тікає завжди, поки не буде 0
     const timer = setInterval(() => {
       setTimeLeft((prev) => prev - 1);
     }, 1000);
@@ -270,7 +253,6 @@ const QuizPage = () => {
     totalQuestions,
     quizId,
   ]);
-  // Важливо: ми прибрали залежність від currentQuestionIndex, тому таймер НЕ скидається
 
   const handleOptionClick = (optionId) => {
     if (isAnswered) return;
@@ -278,7 +260,6 @@ const QuizPage = () => {
     setSelectedOption(optionId);
     setIsAnswered(true);
 
-    // Зберігаємо відповідь
     const isCorrect = optionId === question.correctAnswer;
     setUserAnswers((prev) => [
       ...prev,
@@ -299,7 +280,6 @@ const QuizPage = () => {
       setSelectedOption(null);
       setIsAnswered(false);
     } else {
-      // Квіз завершено успішно (користувач встиг)
       navigate(`/results/${quizId}`, {
         state: { userAnswers, totalQuestions },
       });
