@@ -1,5 +1,4 @@
-@import "./global";
-@import "./variables";
-@import "./_variables.scss";
-@import "./components/_header.scss";
-@import "./components/_button.scss";
+@use "./global" as *;
+@use "./_variables" as *;
+@use "./components/_header" as *;
+@use "./components/_button" as *;

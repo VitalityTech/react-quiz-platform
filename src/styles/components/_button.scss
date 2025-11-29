@@ -1,0 +1,21 @@
+// Minimal button helpers
+// This file exists so modern @use imports don't fail during build.
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: inherit;
+}
+
+.btn.small {
+  padding: 0.3rem 0.5rem;
+  font-size: 0.9rem;
+}
+
+.btn.ghost {
+  background: transparent;
+}
