@@ -28,7 +28,7 @@ const Header = () => {
                   fill="currentColor"
                 />
               </svg>
-              <h1 className="logo_title">pickme quizzes</h1>
+              <h1 className="logo_title">QuizNest</h1>
             </button>
           </div>
           <nav className="header_nav">
