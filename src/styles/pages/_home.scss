@@ -77,7 +77,9 @@
   display: flex;
   flex-direction: column;
   box-shadow: 0 22px 50px rgba(16, 24, 40, 0.06);
-  transition: transform 220ms ease, box-shadow 220ms ease;
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease;
 
   &:hover {
     transform: translateY(-8px);
@@ -89,6 +91,32 @@
     font-size: 1.25rem;
     font-weight: 600;
     margin: 0 0 8px 0;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    gap: 12px;
+  }
+
+  &__favorite {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #c026d3;
+    transition: transform 150ms ease;
+    padding: 4px;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__difficulty {
+    margin-bottom: 16px;
   }
 
   &__description {
@@ -191,7 +219,10 @@
     background: linear-gradient(90deg, #ff2caf 6%, #8b2bff 94%);
     box-shadow: 0 14px 34px rgba(139, 43, 255, 0.1);
     border: none;
-    transition: transform 180ms ease, box-shadow 180ms ease, opacity 120ms ease;
+    transition:
+      transform 180ms ease,
+      box-shadow 180ms ease,
+      opacity 120ms ease;
 
     &:hover {
       transform: translateY(-2px);
@@ -208,8 +239,8 @@
 
   &__delete {
     position: absolute;
-    top: 28px; /* moved down so it sits below the title */
-    right: 28px;
+    top: 20px;
+    right: 20px;
     background: rgba(139, 43, 255, 0.06);
     color: #7c3aed;
     border: 1px solid rgba(139, 43, 255, 0.12);
@@ -218,7 +249,10 @@
     font-weight: 700;
     font-size: 0.85rem;
     cursor: pointer;
-    transition: transform 120ms ease, box-shadow 120ms ease, opacity 120ms ease;
+    transition:
+      transform 120ms ease,
+      box-shadow 120ms ease,
+      opacity 120ms ease;
 
     &:hover {
       transform: translateY(-2px);
@@ -227,6 +261,32 @@
     }
   }
 }
+
+.difficulty-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  &--easy {
+    background-color: #dcfce7;
+    color: #166534;
+  }
+
+  &--medium {
+    background-color: #fef3c7;
+    color: #92400e;
+  }
+
+  &--hard {
+    background-color: #fee2e2;
+    color: #991b1b;
+  }
+}
+
 .info {
   margin-top: 580px;
   text-align: center;

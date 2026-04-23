@@ -8,6 +8,7 @@ const defaultQuizzes = [
     description: "Test your knowledge on various topics!",
     questions: 5,
     time: "60s",
+    difficulty: "Medium",
   },
   {
     id: 2,
@@ -15,6 +16,7 @@ const defaultQuizzes = [
     description: "Explore the wonders of science and nature!",
     questions: 4,
     time: "90s",
+    difficulty: "Hard",
   },
   {
     id: 3,
@@ -22,6 +24,7 @@ const defaultQuizzes = [
     description: "How well do you know movies, music, and more?",
     questions: 3,
     time: "45s",
+    difficulty: "Easy",
   },
 ];
 
@@ -34,6 +37,7 @@ const normalizeStored = (parsed) =>
       ? q.questions.length
       : q.questions || 0,
     time: q.timeLimit ? `${q.timeLimit}s` : q.time || "",
+    difficulty: q.difficulty || "Medium",
   }));
 
 const cleanDeletedRaw = () => {
@@ -125,6 +129,15 @@ const HomePage = () => {
     return () => window.removeEventListener("storage", handleStorage);
   }, []);
 
+  const [favorites, setFavorites] = useState(() => {
+    try {
+      const fav = localStorage.getItem("favoriteQuizzes");
+      return new Set(fav ? JSON.parse(fav) : []);
+    } catch {
+      return new Set();
+    }
+  });
+
   const handleDelete = (id) => {
     try {
       const isDefault = defaultQuizzes.some((d) => String(d.id) === String(id));
@@ -151,8 +164,33 @@ const HomePage = () => {
     }
   };
 
+  const toggleFavorite = (id) => {
+    const newFavorites = new Set(favorites);
+    if (newFavorites.has(String(id))) {
+      newFavorites.delete(String(id));
+    } else {
+      newFavorites.add(String(id));
+    }
+    setFavorites(newFavorites);
+    localStorage.setItem("favoriteQuizzes", JSON.stringify(Array.from(newFavorites)));
+  };
+
   return (
-    <div className="home-page container">
+    <div clasdiv className="quiz-card__header">
+              <h2 className="quiz-card__title">{quiz.title}</h2>
+              <button
+                className="quiz-card__favorite"
+                onClick={() => toggleFavorite(quiz.id)}
+                aria-label="Add to favorites"
+              >
+                {favorites.has(String(quiz.id)) ? "★" : "☆"}
+              </button>
+            </div>
+            <div className="quiz-card__difficulty">
+              <span className={`difficulty-badge difficulty-badge--${quiz.difficulty?.toLowerCase() || "medium"}`}>
+                {quiz.difficulty || "Medium"}
+              </span>
+            </div
       <section className="hero">
         <h1 className="hero__title">Welcome to PickMe Quizzes!</h1>
         <p className="hero__subtitle">
