@@ -352,7 +352,8 @@ const quizzesData = {
       },
       {
         id: 3,
-        question: "Which method is used to render a React app in the DOM in React 19 style?",
+        question:
+          "Which method is used to render a React app in the DOM in React 19 style?",
         options: [
           { id: "A", text: "ReactDOM.mount" },
           { id: "B", text: "createRoot(...).render(...)" },
@@ -499,7 +500,7 @@ const quizzesData = {
         question: "Which value is strictly equal to 0?",
         options: [
           { id: "A", text: "false" },
-          { id: "B", text: "\"0\"" },
+          { id: "B", text: '"0"' },
           { id: "C", text: "0" },
           { id: "D", text: "null" },
         ],
@@ -535,7 +536,8 @@ const quizzesData = {
       },
       {
         id: 3,
-        question: "Which sorting algorithm is typically O(n log n) average-case?",
+        question:
+          "Which sorting algorithm is typically O(n log n) average-case?",
         options: [
           { id: "A", text: "Bubble sort" },
           { id: "B", text: "Merge sort" },
@@ -546,7 +548,8 @@ const quizzesData = {
       },
       {
         id: 4,
-        question: "A queue usually supports insertion at rear and removal from:",
+        question:
+          "A queue usually supports insertion at rear and removal from:",
         options: [
           { id: "A", text: "Rear" },
           { id: "B", text: "Front" },
@@ -607,7 +610,8 @@ const quizzesData = {
       },
       {
         id: 4,
-        question: "Which layer commonly handles cross-cutting request logic in Express?",
+        question:
+          "Which layer commonly handles cross-cutting request logic in Express?",
         options: [
           { id: "A", text: "Middleware" },
           { id: "B", text: "Reducer" },
