@@ -1,16 +1,83 @@
-# React + Vite
+# QuizNest
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+QuizNest - це SPA застосунок для проходження та створення квізів на React + Vite.
 
-Currently, two official plugins are available:
+## Що вміє застосунок
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Переглядати список готових квізів на головній сторінці.
+- Додавати квізи в обране.
+- Створювати власні квізи з довільною кількістю питань і варіантів відповіді.
+- Проходити квіз із таймером.
+- Дивитися результати з детальним розбором відповідей.
+- Зберігати створені квізи локально в браузері через localStorage.
 
-## React Compiler
+## Технології
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19
+- React Router DOM 7
+- Vite 7
+- SCSS (Sass)
+- ESLint 9
 
-## Expanding the ESLint configuration
+## Швидкий старт
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Вимоги:
+
+- Node.js 18+ (рекомендовано актуальну LTS версію)
+- npm 9+
+
+Встановлення та запуск:
+
+```bash
+npm install
+npm run dev
+```
+
+Після запуску відкрийте адресу, яку покаже Vite у терміналі (зазвичай http://localhost:5173).
+
+## Доступні скрипти
+
+- `npm run dev` - запуск локального dev-сервера.
+- `npm run build` - production-збірка у папку dist.
+- `npm run preview` - локальний перегляд production-збірки.
+- `npm run lint` - перевірка коду через ESLint.
+
+## Маршрути
+
+- `/` - головна сторінка зі списком квізів.
+- `/create-quiz` - сторінка створення нового квізу.
+- `/quiz/:quizId` - сторінка проходження конкретного квізу.
+- `/results/:quizId` - сторінка результатів.
+
+## Зберігання даних (localStorage)
+
+Застосунок не використовує бекенд, тому дані зберігаються в браузері:
+
+- `quizzes` - створені користувачем квізи.
+- `favoriteQuizzes` - список обраних квізів.
+- `deletedQuizIds` - ідентифікатори видалених квізів.
+- `lastQuizDraft` - останній збережений драфт квізу.
+
+Щоб "очистити" стан застосунку, видаліть ці ключі в DevTools -> Application -> Local Storage.
+
+## Структура проєкту
+
+```text
+src/
+	components/        # загальні UI-компоненти (Header, Button)
+	pages/             # сторінки застосунку
+	styles/            # SCSS: глобальні стилі, стилі компонентів і сторінок
+	assets/            # іконки та зображення
+	App.jsx            # роутинг і загальна композиція сторінок
+	main.jsx           # точка входу
+```
+
+## Особливості реалізації
+
+- Квізи поєднуються з двох джерел: вбудовані приклади + створені користувачем.
+- Для кастомних квізів дані нормалізуються перед відображенням, щоб коректно працювали картки, таймер і сторінка результатів.
+- На сторінці проходження, коли таймер закінчується, застосунок автоматично завершує тест і формує фінальний результат.
+
+## Примітка
+
+Кнопка логотипу в хедері відтворює звук `public/homebuttonsound.mp3`. Переконайтеся, що файл присутній у папці public.
