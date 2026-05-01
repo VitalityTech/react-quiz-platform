@@ -1,6 +1,6 @@
 .create-quiz-page {
   padding: 2.5rem 0 4rem;
-  background: var(--color-background, #fdf4ff);
+  background: var(--color-background, #0b1118);
 
   &.container {
     max-width: 980px;
@@ -8,19 +8,19 @@
   }
 
   .page-title {
-    color: var(--color-accent-foreground, #6b21a8);
+    color: var(--color-accent-foreground, #9ec7e8);
     margin: 0 0 1rem 0;
     font-size: 1.75rem;
     font-weight: 600;
   }
 
   .card {
-    background: #fff;
-    border: 1px solid rgba(139, 43, 255, 0.08);
+    background: #111a24;
+    border: 1px solid rgba(148, 163, 184, 0.2);
     border-radius: 12px;
     padding: 1.25rem 1.25rem 1.5rem;
     margin-bottom: 1.5rem;
-    box-shadow: 0 8px 22px rgba(16, 24, 40, 0.04);
+    box-shadow: 0 12px 24px rgba(2, 6, 23, 0.36);
   }
 
   .field {
@@ -31,7 +31,7 @@
   }
   .field-label {
     font-size: 0.9rem;
-    color: var(--color-accent-foreground, #6b21a8);
+    color: var(--color-accent-foreground, #9ec7e8);
     margin-bottom: 0.45rem;
   }
 
@@ -40,9 +40,22 @@
     width: 100%;
     padding: 0.6rem 0.9rem;
     border-radius: 8px;
-    border: 1px solid rgba(139, 43, 255, 0.12);
-    background: rgba(243, 232, 255, 0.75);
+    border: 1px solid rgba(148, 163, 184, 0.24);
+    background: rgba(23, 36, 51, 0.92);
+    color: #e5edf5;
     font-size: 0.95rem;
+  }
+
+  .input::placeholder,
+  .textarea::placeholder {
+    color: rgba(148, 163, 184, 0.75);
+  }
+
+  .input:focus,
+  .textarea:focus {
+    outline: 2px solid rgba(56, 189, 248, 0.35);
+    outline-offset: 1px;
+    border-color: rgba(56, 189, 248, 0.6);
   }
   .textarea {
     min-height: 80px;
@@ -58,7 +71,7 @@
   .btn {
     background: transparent;
     border: none;
-    color: var(--color-accent-foreground, #6b21a8);
+    color: var(--color-accent-foreground, #9ec7e8);
     padding: 0.45rem 0.8rem;
     border-radius: 8px;
     cursor: pointer;
@@ -69,14 +82,10 @@
   }
   .btn.ghost {
     background: transparent;
-    color: rgba(16, 24, 40, 0.65);
+    color: rgba(203, 213, 225, 0.75);
   }
   .btn.add-question {
-    background: linear-gradient(
-      90deg,
-      var(--color-primary),
-      var(--color-secondary)
-    );
+    background: linear-gradient(90deg, #0284c7, #2563eb);
     color: #fff;
     border-radius: 12px;
     padding: 0.45rem 0.9rem;
@@ -121,7 +130,7 @@
   }
 
   .muted {
-    color: rgba(16, 24, 40, 0.45);
+    color: rgba(148, 163, 184, 0.8);
     font-size: 0.85rem;
     margin-top: 0.5rem;
   }
@@ -134,14 +143,10 @@
     padding: 0.7rem 1rem;
     border-radius: 8px;
     color: #fff;
-    background: linear-gradient(
-      90deg,
-      var(--color-primary),
-      var(--color-secondary)
-    );
+    background: linear-gradient(90deg, #0284c7, #2563eb);
     border: none;
     font-weight: 600;
-    box-shadow: 0 8px 22px rgba(139, 43, 255, 0.12);
+    box-shadow: 0 10px 22px rgba(2, 6, 23, 0.52);
   }
 }
 

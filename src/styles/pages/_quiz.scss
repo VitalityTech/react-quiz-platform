@@ -12,7 +12,7 @@
   margin-bottom: 24px;
 
   &__title {
-    color: #db2777;
+    color: #dbeafe;
     font-size: 1.8rem;
     font-weight: 700;
     margin: 0;
@@ -22,11 +22,11 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    background: #fff;
-    border: 1px solid #e9d5ff;
+    background: #111a24;
+    border: 1px solid #2a3a4f;
     padding: 8px 16px;
     border-radius: 12px;
-    color: #7c3aed;
+    color: #7dd3fc;
     font-weight: 600;
     font-size: 1.1rem;
   }
@@ -39,34 +39,34 @@
 .progress-bar {
   width: 100%;
   height: 12px;
-  background-color: #fce7f3;
+  background-color: #1a2736;
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 12px;
 
   &__fill {
     height: 100%;
-    background-color: #db2777;
+    background-color: #0ea5e9;
     border-radius: 10px;
     transition: width 0.3s ease;
   }
 }
 
 .progress-text {
-  color: #7c3aed;
+  color: #9ec7e8;
   font-size: 1rem;
   font-weight: 500;
 }
 
 .question-card {
-  background: #fff;
-  border: 1px solid #e9d5ff;
+  background: #111a24;
+  border: 1px solid #253548;
   border-radius: 24px;
   padding: 40px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 14px 26px rgba(2, 6, 23, 0.4);
 
   &__text {
-    color: #4a044e;
+    color: #e5edf5;
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 32px;
@@ -84,8 +84,8 @@
   align-items: center;
   width: 100%;
   padding: 16px 20px;
-  background-color: #faf5ff;
-  border: 1px solid #f3e8ff;
+  background-color: #172433;
+  border: 1px solid #2a3a4f;
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -93,8 +93,8 @@
   position: relative;
 
   &:hover:not(:disabled) {
-    background-color: #f3e8ff;
-    border-color: #d8b4fe;
+    background-color: #1b2d3f;
+    border-color: #3b82f6;
   }
 
   &:disabled {
@@ -130,8 +130,8 @@
     justify-content: center;
     width: 36px;
     height: 36px;
-    background-color: #f3e8ff;
-    color: #6b21a8;
+    background-color: #1f3245;
+    color: #9dd7ff;
     font-weight: 600;
     border-radius: 8px;
     margin-right: 16px;
@@ -139,7 +139,7 @@
   }
 
   &__text {
-    color: #4a044e;
+    color: #dbe7f4;
     font-size: 1.1rem;
     font-weight: 500;
     flex-grow: 1;
@@ -163,8 +163,8 @@
 
 .exit-button {
   padding: 12px 24px;
-  background-color: #f3e8ff;
-  color: #4a044e;
+  background-color: #1b2a3c;
+  color: #dbe7f4;
   border: none;
   border-radius: 8px;
   font-weight: 600;
@@ -172,20 +172,20 @@
   transition: background 0.2s;
 
   &:hover {
-    background-color: #e9d5ff;
+    background-color: #23364d;
   }
 }
 
 .next-button {
   padding: 12px 32px;
-  background: linear-gradient(90deg, #d946ef 0%, #8b5cf6 100%);
+  background: linear-gradient(90deg, #0284c7 0%, #2563eb 100%);
   color: white;
   border: none;
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
   transition: opacity 0.2s;
-  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+  box-shadow: 0 8px 16px rgba(2, 6, 23, 0.52);
 
   &:hover {
     opacity: 0.9;

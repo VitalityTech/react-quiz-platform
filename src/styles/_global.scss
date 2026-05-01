@@ -16,8 +16,13 @@ body {
 
 body {
   color: var(--color-foreground);
-  background: var(--color-background);
+  background:
+    radial-gradient(circle at 15% -10%, rgba(56, 189, 248, 0.12), transparent 38%),
+    radial-gradient(circle at 85% -20%, rgba(30, 64, 175, 0.2), transparent 42%),
+    var(--color-background);
+  min-height: 100vh;
   font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
 }
 
 h1 {
