@@ -1,12 +1,8 @@
 .home-page {
   padding-top: 48px;
   padding-bottom: 72px;
-
-  &.container {
-    max-width: none;
-    padding-left: 40px;
-    padding-right: 40px;
-  }
+  padding-left: clamp(18px, 3vw, 40px);
+  padding-right: clamp(18px, 3vw, 40px);
 }
 
 .container {

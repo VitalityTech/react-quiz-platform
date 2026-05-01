@@ -26,6 +26,78 @@ const defaultQuizzes = [
     time: "45s",
     difficulty: "Easy",
   },
+  {
+    id: 4,
+    title: "World History",
+    description: "From ancient empires to modern events - test your timeline!",
+    questions: 5,
+    time: "80s",
+    difficulty: "Medium",
+  },
+  {
+    id: 5,
+    title: "Technology",
+    description: "Programming, gadgets, and internet culture questions.",
+    questions: 5,
+    time: "75s",
+    difficulty: "Medium",
+  },
+  {
+    id: 6,
+    title: "Geography Challenge",
+    description: "Capitals, landmarks, and maps from around the world.",
+    questions: 4,
+    time: "70s",
+    difficulty: "Easy",
+  },
+  {
+    id: 7,
+    title: "React Fundamentals",
+    description: "JSX, components, props, state, and rendering basics.",
+    questions: 5,
+    time: "80s",
+    difficulty: "Medium",
+  },
+  {
+    id: 8,
+    title: "React Hooks",
+    description: "useState, useEffect, useMemo, useCallback, and refs.",
+    questions: 5,
+    time: "95s",
+    difficulty: "Hard",
+  },
+  {
+    id: 9,
+    title: "JavaScript Essentials",
+    description: "Closures, scope, promises, async/await, and array methods.",
+    questions: 5,
+    time: "85s",
+    difficulty: "Medium",
+  },
+  {
+    id: 10,
+    title: "Algorithms & Data Structures",
+    description: "Big O, sorting, searching, stacks, queues, and trees.",
+    questions: 5,
+    time: "100s",
+    difficulty: "Hard",
+  },
+  {
+    id: 11,
+    title: "Backend & APIs",
+    description: "REST, HTTP status codes, JWT, caching, and middleware.",
+    questions: 5,
+    time: "90s",
+    difficulty: "Medium",
+  },
+  {
+    id: 12,
+    title: "Databases & SQL",
+    description: "Indexes, joins, normalization, transactions, and ACID.",
+    questions: 5,
+    time: "90s",
+    difficulty: "Hard",
+  },
 ];
 
 const normalizeStored = (parsed) =>
@@ -71,13 +143,13 @@ const HomePage = () => {
         const parsed = JSON.parse(stored);
         if (Array.isArray(parsed)) {
           const normalized = normalizeStored(parsed).filter(
-            (q) => !deleted.has(String(q.id))
+            (q) => !deleted.has(String(q.id)),
           );
           const storedIds = new Set(normalized.map((q) => String(q.id)));
           const merged = [
             ...normalized,
             ...defaultQuizzes.filter(
-              (d) => !storedIds.has(String(d.id)) && !deleted.has(String(d.id))
+              (d) => !storedIds.has(String(d.id)) && !deleted.has(String(d.id)),
             ),
           ];
           return merged;
@@ -99,14 +171,14 @@ const HomePage = () => {
           const parsed = JSON.parse(stored);
           if (Array.isArray(parsed)) {
             const normalized = normalizeStored(parsed).filter(
-              (q) => !deleted.has(String(q.id))
+              (q) => !deleted.has(String(q.id)),
             );
             const storedIds = new Set(normalized.map((q) => String(q.id)));
             const merged = [
               ...normalized,
               ...defaultQuizzes.filter(
                 (d) =>
-                  !storedIds.has(String(d.id)) && !deleted.has(String(d.id))
+                  !storedIds.has(String(d.id)) && !deleted.has(String(d.id)),
               ),
             ];
             setQuizzes(merged);
@@ -172,25 +244,14 @@ const HomePage = () => {
       newFavorites.add(String(id));
     }
     setFavorites(newFavorites);
-    localStorage.setItem("favoriteQuizzes", JSON.stringify(Array.from(newFavorites)));
+    localStorage.setItem(
+      "favoriteQuizzes",
+      JSON.stringify(Array.from(newFavorites)),
+    );
   };
 
   return (
-    <div clasdiv className="quiz-card__header">
-              <h2 className="quiz-card__title">{quiz.title}</h2>
-              <button
-                className="quiz-card__favorite"
-                onClick={() => toggleFavorite(quiz.id)}
-                aria-label="Add to favorites"
-              >
-                {favorites.has(String(quiz.id)) ? "★" : "☆"}
-              </button>
-            </div>
-            <div className="quiz-card__difficulty">
-              <span className={`difficulty-badge difficulty-badge--${quiz.difficulty?.toLowerCase() || "medium"}`}>
-                {quiz.difficulty || "Medium"}
-              </span>
-            </div
+    <div className="home-page">
       <section className="hero">
         <h1 className="hero__title">Welcome to PickMe Quizzes!</h1>
         <p className="hero__subtitle">
@@ -210,7 +271,27 @@ const HomePage = () => {
                 : "")
             }
           >
-            <h2 className="quiz-card__title">{quiz.title}</h2>
+            <div className="quiz-card__header">
+              <h2 className="quiz-card__title">{quiz.title}</h2>
+              <button
+                className="quiz-card__favorite"
+                onClick={() => toggleFavorite(quiz.id)}
+                aria-label="Add to favorites"
+              >
+                {favorites.has(String(quiz.id)) ? "★" : "☆"}
+              </button>
+            </div>
+
+            <div className="quiz-card__difficulty">
+              <span
+                className={`difficulty-badge difficulty-badge--${
+                  quiz.difficulty?.toLowerCase() || "medium"
+                }`}
+              >
+                {quiz.difficulty || "Medium"}
+              </span>
+            </div>
+
             <p className="quiz-card__description">{quiz.description}</p>
 
             <div className="quiz-card__info">

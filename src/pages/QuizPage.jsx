@@ -152,6 +152,544 @@ const quizzesData = {
       },
     ],
   },
+  4: {
+    title: "World History",
+    timeLimit: 80,
+    questions: [
+      {
+        id: 1,
+        question: "In which year did World War II end?",
+        options: [
+          { id: "A", text: "1943" },
+          { id: "B", text: "1945" },
+          { id: "C", text: "1947" },
+          { id: "D", text: "1950" },
+        ],
+        correctAnswer: "B",
+      },
+      {
+        id: 2,
+        question: "Who was the first President of the United States?",
+        options: [
+          { id: "A", text: "Thomas Jefferson" },
+          { id: "B", text: "John Adams" },
+          { id: "C", text: "George Washington" },
+          { id: "D", text: "Abraham Lincoln" },
+        ],
+        correctAnswer: "C",
+      },
+      {
+        id: 3,
+        question: "The Great Wall is located in which country?",
+        options: [
+          { id: "A", text: "Mongolia" },
+          { id: "B", text: "India" },
+          { id: "C", text: "Japan" },
+          { id: "D", text: "China" },
+        ],
+        correctAnswer: "D",
+      },
+      {
+        id: 4,
+        question: "Which civilization built Machu Picchu?",
+        options: [
+          { id: "A", text: "Maya" },
+          { id: "B", text: "Inca" },
+          { id: "C", text: "Aztec" },
+          { id: "D", text: "Roman" },
+        ],
+        correctAnswer: "B",
+      },
+      {
+        id: 5,
+        question: "Which city was once called Constantinople?",
+        options: [
+          { id: "A", text: "Athens" },
+          { id: "B", text: "Istanbul" },
+          { id: "C", text: "Rome" },
+          { id: "D", text: "Cairo" },
+        ],
+        correctAnswer: "B",
+      },
+    ],
+  },
+  5: {
+    title: "Technology",
+    timeLimit: 75,
+    questions: [
+      {
+        id: 1,
+        question: "What does HTML stand for?",
+        options: [
+          { id: "A", text: "HyperText Markup Language" },
+          { id: "B", text: "HighText Machine Language" },
+          { id: "C", text: "Hyperlink and Text Management Language" },
+          { id: "D", text: "Home Tool Markup Language" },
+        ],
+        correctAnswer: "A",
+      },
+      {
+        id: 2,
+        question: "Which company develops the React library?",
+        options: [
+          { id: "A", text: "Google" },
+          { id: "B", text: "Meta" },
+          { id: "C", text: "Microsoft" },
+          { id: "D", text: "Amazon" },
+        ],
+        correctAnswer: "B",
+      },
+      {
+        id: 3,
+        question: "What is the primary purpose of Git?",
+        options: [
+          { id: "A", text: "Image editing" },
+          { id: "B", text: "Version control" },
+          { id: "C", text: "Database hosting" },
+          { id: "D", text: "Video rendering" },
+        ],
+        correctAnswer: "B",
+      },
+      {
+        id: 4,
+        question: "Which one is a JavaScript runtime?",
+        options: [
+          { id: "A", text: "Node.js" },
+          { id: "B", text: "Django" },
+          { id: "C", text: "Laravel" },
+          { id: "D", text: "Rails" },
+        ],
+        correctAnswer: "A",
+      },
+      {
+        id: 5,
+        question: "What does CSS mainly control in a web page?",
+        options: [
+          { id: "A", text: "Server logic" },
+          { id: "B", text: "Data storage" },
+          { id: "C", text: "Visual styling" },
+          { id: "D", text: "Browser installation" },
+        ],
+        correctAnswer: "C",
+      },
+    ],
+  },
+  6: {
+    title: "Geography Challenge",
+    timeLimit: 70,
+    questions: [
+      {
+        id: 1,
+        question: "What is the largest country by area?",
+        options: [
+          { id: "A", text: "Canada" },
+          { id: "B", text: "China" },
+          { id: "C", text: "Russia" },
+          { id: "D", text: "USA" },
+        ],
+        correctAnswer: "C",
+      },
+      {
+        id: 2,
+        question: "Which river is the longest in the world?",
+        options: [
+          { id: "A", text: "Amazon" },
+          { id: "B", text: "Nile" },
+          { id: "C", text: "Yangtze" },
+          { id: "D", text: "Mississippi" },
+        ],
+        correctAnswer: "B",
+      },
+      {
+        id: 3,
+        question: "What is the capital city of Australia?",
+        options: [
+          { id: "A", text: "Sydney" },
+          { id: "B", text: "Melbourne" },
+          { id: "C", text: "Perth" },
+          { id: "D", text: "Canberra" },
+        ],
+        correctAnswer: "D",
+      },
+      {
+        id: 4,
+        question: "Which desert is the largest hot desert on Earth?",
+        options: [
+          { id: "A", text: "Sahara" },
+          { id: "B", text: "Gobi" },
+          { id: "C", text: "Kalahari" },
+          { id: "D", text: "Atacama" },
+        ],
+        correctAnswer: "A",
+      },
+    ],
+  },
+  7: {
+    title: "React Fundamentals",
+    timeLimit: 80,
+    questions: [
+      {
+        id: 1,
+        question: "What is JSX?",
+        options: [
+          { id: "A", text: "A database query language" },
+          { id: "B", text: "A syntax extension for JavaScript" },
+          { id: "C", text: "A CSS preprocessor" },
+          { id: "D", text: "A Node.js server" },
+        ],
+        correctAnswer: "B",
+      },
+      {
+        id: 2,
+        question: "Props in React are primarily used to:",
+        options: [
+          { id: "A", text: "Store local mutable state" },
+          { id: "B", text: "Pass data from parent to child" },
+          { id: "C", text: "Handle API routes" },
+          { id: "D", text: "Compile components" },
+        ],
+        correctAnswer: "B",
+      },
+      {
+        id: 3,
+        question: "Which method is used to render a React app in the DOM in React 19 style?",
+        options: [
+          { id: "A", text: "ReactDOM.mount" },
+          { id: "B", text: "createRoot(...).render(...)" },
+          { id: "C", text: "React.renderApp" },
+          { id: "D", text: "ReactDOM.attach" },
+        ],
+        correctAnswer: "B",
+      },
+      {
+        id: 4,
+        question: "Keys in lists help React to:",
+        options: [
+          { id: "A", text: "Encrypt list items" },
+          { id: "B", text: "Track item identity between renders" },
+          { id: "C", text: "Sort arrays automatically" },
+          { id: "D", text: "Prevent event bubbling" },
+        ],
+        correctAnswer: "B",
+      },
+      {
+        id: 5,
+        question: "State updates in React should be treated as:",
+        options: [
+          { id: "A", text: "Directly mutable" },
+          { id: "B", text: "Immutable updates" },
+          { id: "C", text: "Synchronous only" },
+          { id: "D", text: "Global by default" },
+        ],
+        correctAnswer: "B",
+      },
+    ],
+  },
+  8: {
+    title: "React Hooks",
+    timeLimit: 95,
+    questions: [
+      {
+        id: 1,
+        question: "Which hook is used for local component state?",
+        options: [
+          { id: "A", text: "useState" },
+          { id: "B", text: "useEffect" },
+          { id: "C", text: "useRef" },
+          { id: "D", text: "useMemo" },
+        ],
+        correctAnswer: "A",
+      },
+      {
+        id: 2,
+        question: "useEffect runs after:",
+        options: [
+          { id: "A", text: "Server restart" },
+          { id: "B", text: "Rendering commits to the screen" },
+          { id: "C", text: "Babel transpilation" },
+          { id: "D", text: "Component import" },
+        ],
+        correctAnswer: "B",
+      },
+      {
+        id: 3,
+        question: "What is useMemo mainly for?",
+        options: [
+          { id: "A", text: "Caching expensive computed values" },
+          { id: "B", text: "Styling components" },
+          { id: "C", text: "Routing pages" },
+          { id: "D", text: "Fetching CSS files" },
+        ],
+        correctAnswer: "A",
+      },
+      {
+        id: 4,
+        question: "useRef can be used to:",
+        options: [
+          { id: "A", text: "Trigger rerenders on each update" },
+          { id: "B", text: "Store mutable values without rerender" },
+          { id: "C", text: "Replace state management completely" },
+          { id: "D", text: "Declare routes" },
+        ],
+        correctAnswer: "B",
+      },
+      {
+        id: 5,
+        question: "useCallback helps when:",
+        options: [
+          { id: "A", text: "You need to memoize function references" },
+          { id: "B", text: "You need to mutate props" },
+          { id: "C", text: "You need CSS modules" },
+          { id: "D", text: "You need class components" },
+        ],
+        correctAnswer: "A",
+      },
+    ],
+  },
+  9: {
+    title: "JavaScript Essentials",
+    timeLimit: 85,
+    questions: [
+      {
+        id: 1,
+        question: "A closure is:",
+        options: [
+          { id: "A", text: "A CSS selector" },
+          { id: "B", text: "A function with access to outer scope" },
+          { id: "C", text: "A promise chain" },
+          { id: "D", text: "A JSON parser" },
+        ],
+        correctAnswer: "B",
+      },
+      {
+        id: 2,
+        question: "Which keyword declares a block-scoped variable?",
+        options: [
+          { id: "A", text: "var" },
+          { id: "B", text: "let" },
+          { id: "C", text: "global" },
+          { id: "D", text: "scope" },
+        ],
+        correctAnswer: "B",
+      },
+      {
+        id: 3,
+        question: "What does async/await improve compared to raw promises?",
+        options: [
+          { id: "A", text: "Rendering speed" },
+          { id: "B", text: "Readability of asynchronous code" },
+          { id: "C", text: "CSS performance" },
+          { id: "D", text: "Memory encryption" },
+        ],
+        correctAnswer: "B",
+      },
+      {
+        id: 4,
+        question: "Which method creates a new array with transformed elements?",
+        options: [
+          { id: "A", text: "map" },
+          { id: "B", text: "forEach" },
+          { id: "C", text: "push" },
+          { id: "D", text: "shift" },
+        ],
+        correctAnswer: "A",
+      },
+      {
+        id: 5,
+        question: "Which value is strictly equal to 0?",
+        options: [
+          { id: "A", text: "false" },
+          { id: "B", text: "\"0\"" },
+          { id: "C", text: "0" },
+          { id: "D", text: "null" },
+        ],
+        correctAnswer: "C",
+      },
+    ],
+  },
+  10: {
+    title: "Algorithms & Data Structures",
+    timeLimit: 100,
+    questions: [
+      {
+        id: 1,
+        question: "What is the average time complexity of binary search?",
+        options: [
+          { id: "A", text: "O(n)" },
+          { id: "B", text: "O(log n)" },
+          { id: "C", text: "O(n log n)" },
+          { id: "D", text: "O(1)" },
+        ],
+        correctAnswer: "B",
+      },
+      {
+        id: 2,
+        question: "Which data structure uses LIFO order?",
+        options: [
+          { id: "A", text: "Queue" },
+          { id: "B", text: "Heap" },
+          { id: "C", text: "Stack" },
+          { id: "D", text: "Graph" },
+        ],
+        correctAnswer: "C",
+      },
+      {
+        id: 3,
+        question: "Which sorting algorithm is typically O(n log n) average-case?",
+        options: [
+          { id: "A", text: "Bubble sort" },
+          { id: "B", text: "Merge sort" },
+          { id: "C", text: "Selection sort" },
+          { id: "D", text: "Insertion sort" },
+        ],
+        correctAnswer: "B",
+      },
+      {
+        id: 4,
+        question: "A queue usually supports insertion at rear and removal from:",
+        options: [
+          { id: "A", text: "Rear" },
+          { id: "B", text: "Front" },
+          { id: "C", text: "Middle" },
+          { id: "D", text: "Random index" },
+        ],
+        correctAnswer: "B",
+      },
+      {
+        id: 5,
+        question: "Big O notation describes:",
+        options: [
+          { id: "A", text: "Exact runtime in milliseconds" },
+          { id: "B", text: "Compiler version" },
+          { id: "C", text: "Asymptotic growth of resource usage" },
+          { id: "D", text: "Network throughput" },
+        ],
+        correctAnswer: "C",
+      },
+    ],
+  },
+  11: {
+    title: "Backend & APIs",
+    timeLimit: 90,
+    questions: [
+      {
+        id: 1,
+        question: "Which HTTP method is typically used to create a resource?",
+        options: [
+          { id: "A", text: "GET" },
+          { id: "B", text: "POST" },
+          { id: "C", text: "DELETE" },
+          { id: "D", text: "HEAD" },
+        ],
+        correctAnswer: "B",
+      },
+      {
+        id: 2,
+        question: "Status code 404 means:",
+        options: [
+          { id: "A", text: "Unauthorized" },
+          { id: "B", text: "Created" },
+          { id: "C", text: "Not Found" },
+          { id: "D", text: "Server Time Out" },
+        ],
+        correctAnswer: "C",
+      },
+      {
+        id: 3,
+        question: "JWT stands for:",
+        options: [
+          { id: "A", text: "Java Web Token" },
+          { id: "B", text: "JSON Web Token" },
+          { id: "C", text: "Joint Web Thread" },
+          { id: "D", text: "JavaScript Worker Token" },
+        ],
+        correctAnswer: "B",
+      },
+      {
+        id: 4,
+        question: "Which layer commonly handles cross-cutting request logic in Express?",
+        options: [
+          { id: "A", text: "Middleware" },
+          { id: "B", text: "Reducer" },
+          { id: "C", text: "Hook" },
+          { id: "D", text: "Compiler" },
+        ],
+        correctAnswer: "A",
+      },
+      {
+        id: 5,
+        question: "Caching often improves:",
+        options: [
+          { id: "A", text: "Latency and server load" },
+          { id: "B", text: "Type checking" },
+          { id: "C", text: "Source maps" },
+          { id: "D", text: "Encryption key size" },
+        ],
+        correctAnswer: "A",
+      },
+    ],
+  },
+  12: {
+    title: "Databases & SQL",
+    timeLimit: 90,
+    questions: [
+      {
+        id: 1,
+        question: "Which SQL clause is used to filter rows?",
+        options: [
+          { id: "A", text: "ORDER BY" },
+          { id: "B", text: "WHERE" },
+          { id: "C", text: "GROUP BY" },
+          { id: "D", text: "JOIN" },
+        ],
+        correctAnswer: "B",
+      },
+      {
+        id: 2,
+        question: "An index is mainly used to:",
+        options: [
+          { id: "A", text: "Speed up queries" },
+          { id: "B", text: "Encrypt table rows" },
+          { id: "C", text: "Rename columns" },
+          { id: "D", text: "Create APIs" },
+        ],
+        correctAnswer: "A",
+      },
+      {
+        id: 3,
+        question: "Which JOIN returns only matching rows from both tables?",
+        options: [
+          { id: "A", text: "LEFT JOIN" },
+          { id: "B", text: "RIGHT JOIN" },
+          { id: "C", text: "INNER JOIN" },
+          { id: "D", text: "FULL OUTER JOIN" },
+        ],
+        correctAnswer: "C",
+      },
+      {
+        id: 4,
+        question: "ACID properties are related to:",
+        options: [
+          { id: "A", text: "Transactions" },
+          { id: "B", text: "Routing" },
+          { id: "C", text: "Image optimization" },
+          { id: "D", text: "Compiler output" },
+        ],
+        correctAnswer: "A",
+      },
+      {
+        id: 5,
+        question: "Normalization primarily helps to:",
+        options: [
+          { id: "A", text: "Increase image quality" },
+          { id: "B", text: "Reduce data redundancy" },
+          { id: "C", text: "Render UI faster" },
+          { id: "D", text: "Change HTTP status codes" },
+        ],
+        correctAnswer: "B",
+      },
+    ],
+  },
 };
 
 const QuizPage = () => {
